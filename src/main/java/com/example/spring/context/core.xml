@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Repository and Service layers
+-->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/lang
+       http://www.springframework.org/schema/lang/spring-lang.xsd">
+
+
+        <bean id="test" name="test" class="com.example.spring.ComplexObject" p:injectionTest-ref="injection2" depends-on="injection" >
+            <property name="list">
+                <list>
+                    <value> list is here</value>
+                    <value> too many objects</value>
+                </list>
+            </property>
+            <property name="map">
+                <map>
+                    <entry key="first" value="1.1"/>
+                    <entry key="second" value="2"/>
+                </map>
+            </property>
+
+            <!--<property name="injectionTest" ref="injection3"/>-->
+
+        </bean>
+
+    <!--static factory -->
+    <!--<bean id="injection" name="injection1" class="com.example.spring.Service" factory-method="getInstance" scope="prototype" />-->
+    <!--normal -->
+    <bean id="injection" name="injection1" class="com.example.spring.Injection" scope="prototype" />
+    <!--method injection-->
+    <bean id="service2" name="service2" class="com.example.spring.Service2">
+        <lookup-method name="getInstance2" bean="injection"/>
+    </bean>
+
+
+    <alias name="injection1" alias="injection2"/>
+    <alias name="injection1" alias="injection3"/>
+
+    <!--web configuration-->
+    <!--The web configuration should be load by WebApplication relevant container-->
+    <!--<bean id="appScopeTest" name="appScopeTest" scope="application" lazy-init="false"/>-->
+
+
+    <!-- an HTTP Session-scoped bean exposed as a proxy -->
+    <bean id="userPreferences" class="com.example.spring.web.UserPreferences" scope="session">
+        <!-- instructs the container to proxy the surrounding bean -->
+        <!--jdk proxy need to implement one interface at least and define the attribute with interface, not exact class-->
+        <!--<aop:scoped-proxy proxy-target-class="false" />-->
+
+        <!--declare with CGLIB, no interface need to be implement in userPreference bean-->
+        <aop:scoped-proxy/>
+
+    </bean>
+
+    <!-- a singleton-scoped bean injected with a proxy to the above bean -->
+    <bean id="userService" class="com.example.spring.web.SimpleUserService">
+        <!-- a reference to the proxy userPreferences bean -->
+        <property name="userPref" ref="userPreferences"/>
+    </bean>
+
+   <!-- <lang:groovy id="messenger"
+                 script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
+        <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
+    </lang:groovy>-->
+
+    <bean class="scripting.InstantiationTracingBeanPostProcessor"/>
+
+</beans>
+
