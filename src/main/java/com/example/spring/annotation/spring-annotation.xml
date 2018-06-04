@@ -12,4 +12,15 @@
     <bean id="simpleMovieLister" class="com.example.spring.annotation.SimpleMovieLister"/>
     <bean id="movieFinder" class="com.example.spring.annotation.MovieFinder"/>
 
+    <bean class="com.example.spring.annotation.MovieCatalog">
+        <property name="catalog" value="first catalog"/>
+    </bean>
+
+    <bean class="com.example.spring.annotation.MovieCatalog">
+        <property name="catalog" value="second catalog"/>
+    </bean>
+     <bean class="com.example.spring.annotation.MovieCatalog">
+        <property name="catalog" value="second catalog"/>
+    </bean>
+    <bean id="movieRecommender" class="com.example.spring.annotation.MovieRecommender"/>
 </beans>
