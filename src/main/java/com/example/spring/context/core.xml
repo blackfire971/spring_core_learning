@@ -6,13 +6,10 @@
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:lang="http://www.springframework.org/schema/lang"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd
-       http://www.springframework.org/schema/lang
-       http://www.springframework.org/schema/lang/spring-lang.xsd">
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
         <bean id="test" name="test" class="com.example.spring.ComplexObject" p:injectionTest-ref="injection2" depends-on="injection" >
@@ -36,7 +33,7 @@
     <!--static factory -->
     <!--<bean id="injection" name="injection1" class="com.example.spring.Service" factory-method="getInstance" scope="prototype" />-->
     <!--normal -->
-    <bean id="injection" name="injection1" class="com.example.spring.Injection" scope="prototype" />
+    <bean id="injection" name="injection1" class="com.example.spring.Injection"  init-method="init" />
     <!--method injection-->
     <bean id="service2" name="service2" class="com.example.spring.Service2">
         <lookup-method name="getInstance2" bean="injection"/>
@@ -52,7 +49,7 @@
 
 
     <!-- an HTTP Session-scoped bean exposed as a proxy -->
-    <bean id="userPreferences" class="com.example.spring.web.UserPreferences" scope="session">
+    <bean id="userPreferences" class="com.example.spring.web.UserPreferences">
         <!-- instructs the container to proxy the surrounding bean -->
         <!--jdk proxy need to implement one interface at least and define the attribute with interface, not exact class-->
         <!--<aop:scoped-proxy proxy-target-class="false" />-->
@@ -72,7 +69,10 @@
         <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
     </lang:groovy>-->
 
-    <bean class="scripting.InstantiationTracingBeanPostProcessor"/>
+    <bean class="com.example.spring.InstantiationTracingBeanPostProcessor"/>
+    <bean class="com.example.spring.InstantiationTracingBeanFactoryPostProcessor"/>
+
+    <!--<bean class="com.example.spring.InstantiationTracingBeanPostProcessor1"/>-->
 
 </beans>
 

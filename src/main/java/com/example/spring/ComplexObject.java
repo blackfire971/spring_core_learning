@@ -45,21 +45,22 @@ public class ComplexObject {
 //        ApplicationContext context = new ClassPathXmlApplicationContext("com/example/spring/context/core.xml");
         ApplicationContext context = new FileSystemXmlApplicationContext
                 ("/src/main/java/com/example/spring/context/core.xml");
-        ComplexObject complexObject = context.getBean("test", ComplexObject.class);
-        List<String> list1 = complexObject.list;
-        for (String s :
-                list1) {
-            System.err.println(s);
-        }
-        Injection injection = complexObject.getInjectionTest();
-        System.err.println(injection);
-        injection.print();
+//        ComplexObject complexObject = context.getBean("test", ComplexObject.class);
+//        List<String> list1 = complexObject.list;
+//        for (String s :
+//                list1) {
+//            System.err.println(s);
+//        }
+//        Injection injection = complexObject.getInjectionTest();
+//        System.err.println(injection);
+//        injection.print();
 
         Injection injection1 = context.getBean("injection", Injection.class);
+        System.err.println("injection object property name:" + injection1.name);
         System.err.println(injection1);
 
-        Service2 service2 = context.getBean("service2", Service2.class);
-        System.err.println(service2.getInstance2());
+//        Service2 service2 = context.getBean("service2", Service2.class);
+//        System.err.println(service2.getInstance2());
 
 
 
