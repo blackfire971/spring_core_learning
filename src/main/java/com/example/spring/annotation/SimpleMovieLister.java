@@ -1,6 +1,7 @@
 package com.example.spring.annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.lang.Nullable;
 
 /**
@@ -11,6 +12,8 @@ public class SimpleMovieLister {
 //    @Autowired(required = false)
     private MovieFinder movieFinder;
 
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Autowired
     public void setMovieFinder(@Nullable MovieFinder movieFinder) {
@@ -23,5 +26,9 @@ public class SimpleMovieLister {
 
     public MovieFinder getMovieFinder() {
         return this.movieFinder;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return this.applicationContext;
     }
 }

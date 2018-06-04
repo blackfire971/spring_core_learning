@@ -10,6 +10,6 @@
     <context:annotation-config/>
 
     <bean id="simpleMovieLister" class="com.example.spring.annotation.SimpleMovieLister"/>
-    <!--<bean id="movieFinder" class="com.example.spring.annotation.MovieFinder"/>-->
+    <bean id="movieFinder" class="com.example.spring.annotation.MovieFinder"/>
 
 </beans>

@@ -12,5 +12,7 @@ public class Main {
                 ("/src/main/java/com/example/spring/annotation/spring-annotation.xml");
         SimpleMovieLister simpleMovieLister = context.getBean("simpleMovieLister", SimpleMovieLister.class);
         simpleMovieLister.getMovieFinder().print();
+        System.err.println(simpleMovieLister.getApplicationContext().getApplicationName());
+
     }
 }
