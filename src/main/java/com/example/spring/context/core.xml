@@ -67,7 +67,6 @@
         <!-- a reference to the proxy userPreferences bean -->
         <property name="userPref" ref="userPreferences"/>
     </bean>
-
    <!-- <lang:groovy id="messenger"
                  script-source="classpath:org/springframework/scripting/groovy/Messenger.groovy">
         <lang:property name="message" value="Fiona Apple Is Just So Dreamy."/>
