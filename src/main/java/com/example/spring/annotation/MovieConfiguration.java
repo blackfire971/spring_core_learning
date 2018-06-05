@@ -1,5 +1,6 @@
 package com.example.spring.annotation;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -18,9 +19,16 @@ public class MovieConfiguration {
 
     @Primary
     @Bean
+    @Qualifier("second")
     public MovieCatalog secondMovieCatalog() {
 
         return new MovieCatalog("second movie catalog");
+    }
+
+    @Bean
+    @Qualifier("third")
+    public MovieCatalog thirdMovieCatalog() {
+        return new MovieCatalog("third movie catalog");
     }
 
 }
