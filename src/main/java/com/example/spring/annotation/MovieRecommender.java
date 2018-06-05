@@ -8,4 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class MovieRecommender {
     @Autowired
     private MovieCatalog movieCatalog;
+
+    public void print() {
+        System.err.println("MovieRecommender print() method..." + movieCatalog.getCatalog());
+    }
+
 }

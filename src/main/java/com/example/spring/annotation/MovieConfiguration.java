@@ -9,15 +9,18 @@ import org.springframework.context.annotation.Primary;
  */
 @Configuration
 public class MovieConfiguration {
-    @Bean
-    @Primary
-    public MovieCatalog firstMovieCatalog() {
-        return new MovieCatalog();
-    }
 
     @Bean
+//    @Primary
+    public MovieCatalog firstMovieCatalog() {
+        return new MovieCatalog("first movie catalog");
+    }
+
+    @Primary
+    @Bean
     public MovieCatalog secondMovieCatalog() {
-        return new MovieCatalog();
+
+        return new MovieCatalog("second movie catalog");
     }
 
 }

@@ -6,11 +6,18 @@ package com.example.spring.annotation;
 public class MovieCatalog {
     private String catalog;
 
+    public MovieCatalog(String catalog) {
+        this.catalog = catalog;
+    }
     public void print() {
         System.err.println("MovieCatalog print() method..." + catalog);
     }
 
     public void setCatalog(String catalog) {
         this.catalog = catalog;
+    }
+
+    public String getCatalog() {
+        return catalog;
     }
 }
