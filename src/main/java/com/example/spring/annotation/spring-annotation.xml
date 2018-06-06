@@ -9,10 +9,10 @@
 
     <context:annotation-config/>
 
-    <bean id="simpleMovieLister" class="com.example.spring.annotation.SimpleMovieLister"/>
-    <bean id="movieFinder" class="com.example.spring.annotation.MovieFinder"/>
-    <bean class="com.example.spring.annotation.MovieCatalog">
-        <constructor-arg type="java.lang.String" value="movie catalog from xml"/>
-    </bean>
+    <!--<bean id="simpleMovieLister" class="com.example.spring.annotation.SimpleMovieLister"/>-->
+    <!--<bean id="movieFinder" class="com.example.spring.annotation.MovieFinder"/>-->
+    <!--<bean class="com.example.spring.annotation.MovieCatalog">-->
+        <!--<constructor-arg type="java.lang.String" value="movie catalog from xml"/>-->
+    <!--</bean>-->
     <!--<bean id="movieRecommender" class="com.example.spring.annotation.MovieRecommender"/>-->
 </beans>

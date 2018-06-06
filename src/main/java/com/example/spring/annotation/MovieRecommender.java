@@ -1,8 +1,11 @@
 package com.example.spring.annotation;
 
+import com.example.spring.annotation.qualifier.Format;
+import com.example.spring.annotation.qualifier.MovieQualifier;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * Created by saml on 6/4/2018.
@@ -10,11 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MovieRecommender {
 
-    @Autowired
-    @Qualifier("third")
+    @Resource
+    @MovieQualifier(format= Format.BLUERAY, genre = "Comedy")
     private MovieCatalog movieCatalog;
 
-    public void print(@Qualifier("second")MovieCatalog catalog) {
+    @Autowired
+    public void print(@MovieQualifier(format=Format.VHS, genre = "Action") MovieCatalog catalog) {
         System.err.println("MovieRecommender print() method..." + catalog.getCatalog());
         System.err.println("MovieRecommender property value:"+movieCatalog.getCatalog());
     }

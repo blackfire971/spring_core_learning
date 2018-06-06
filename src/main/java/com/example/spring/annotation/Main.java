@@ -21,7 +21,7 @@ public class Main {
         MovieRecommender movieRecommender = context1.getBean("movieRecommender", MovieRecommender.class);
         System.err.println(movieRecommender.getMovieCatalog().getCatalog());
 
-        movieRecommender.print(context1.getBean("thirdMovieCatalog", MovieCatalog.class));
+//        movieRecommender.print(context1.getBean("thirdMovieCatalog", MovieCatalog.class));
 
     }
 }

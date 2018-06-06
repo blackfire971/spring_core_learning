@@ -1,9 +1,9 @@
 package com.example.spring.annotation;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.example.spring.annotation.qualifier.Format;
+import com.example.spring.annotation.qualifier.MovieQualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 /**
  * Created by saml on 6/4/2018.
@@ -17,16 +17,16 @@ public class MovieConfiguration {
         return new MovieCatalog("first movie catalog");
     }
 
-    @Primary
+//    @Primary
     @Bean
-    @Qualifier("second")
+    @MovieQualifier(format = Format.VHS, genre = "Action")
     public MovieCatalog secondMovieCatalog() {
 
         return new MovieCatalog("second movie catalog");
     }
 
     @Bean
-    @Qualifier("third")
+    @MovieQualifier(format = Format.BLUERAY, genre = "Comedy")
     public MovieCatalog thirdMovieCatalog() {
         return new MovieCatalog("third movie catalog");
     }

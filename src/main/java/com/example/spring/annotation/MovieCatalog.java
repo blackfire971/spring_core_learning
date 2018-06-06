@@ -1,5 +1,8 @@
 package com.example.spring.annotation;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * Created by saml on 6/4/2018.
  */
@@ -19,5 +22,16 @@ public class MovieCatalog {
 
     public String getCatalog() {
         return catalog;
+    }
+
+    @PostConstruct
+    public void printAfterConstruct() {
+        System.err.println("MovieCatalog printAfterConstruct() method...");
+    }
+
+    @PreDestroy
+    public void printBeforeDestroy() {
+
+        System.err.println("MovieCatalog printBeforeDestroy() method...");
     }
 }
