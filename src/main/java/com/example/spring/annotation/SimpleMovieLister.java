@@ -1,21 +1,25 @@
 package com.example.spring.annotation;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.lang.Nullable;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * Created by saml on 6/4/2018.
  */
+//@Component
+@Named
 public class SimpleMovieLister {
 
-//    @Autowired(required = false)
+    @Inject
     private MovieFinder movieFinder;
 
-    @Autowired
+    @Inject
     private ApplicationContext applicationContext;
 
-    @Autowired
+    @Inject
     public void setMovieFinder(@Nullable MovieFinder movieFinder) {
         this.movieFinder = movieFinder;
     }

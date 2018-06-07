@@ -1,6 +1,5 @@
 package com.example.spring.annotation;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -15,10 +14,20 @@ public class Main {
 //        System.err.println(simpleMovieLister.getApplicationContext().getApplicationName());
 //         MovieRecommender movieRecommender = context.getBean("movieRecommender", MovieRecommender.class);
 //         movieRecommender.print();
-        ApplicationContext context1 = new AnnotationConfigApplicationContext("com.example.spring.annotation");
+//        ApplicationContext context1 = new AnnotationConfigApplicationContext("com.example.spring.annotation");
+        AnnotationConfigApplicationContext context1 = new AnnotationConfigApplicationContext();
+//        context1.refresh();
+        context1.register(MovieConfiguration.class);
+        context1.refresh();
 //        MovieCatalog movieCatalog = context1.getBean( MovieCatalog.class);
 //        movieCatalog.print();
         MovieRecommender movieRecommender = context1.getBean("movieRecommender", MovieRecommender.class);
+//        MovieCatalog movieCatalog = context1.getBean( MovieCatalog.class);
+//        movieCatalog.print();
+
+        SimpleMovieLister simpleMovieLister = context1.getBean("simpleMovieLister", SimpleMovieLister.class);
+        simpleMovieLister.print();
+        simpleMovieLister.getMovieFinder().print();
         System.err.println(movieRecommender.getMovieCatalog().getCatalog());
 
 //        movieRecommender.print(context1.getBean("thirdMovieCatalog", MovieCatalog.class));
