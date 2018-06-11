@@ -5,9 +5,9 @@ import com.example.spring.annotation.qualifier.MovieQualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 /**
  * Created by saml on 6/4/2018.
@@ -18,7 +18,8 @@ public class MovieConfiguration {
 
     @Bean
 //    @Primary
-    @Scope("prototype")
+//    @Scope("prototype")
+    @Singleton
     @Named("first")
     public MovieCatalog firstMovieCatalog() {
         return new MovieCatalog("first movie catalog");
@@ -27,7 +28,7 @@ public class MovieConfiguration {
     //    @Primary
     @Bean
     @MovieQualifier(format = Format.VHS, genre = "Action")
-    @Scope("prototype")
+    @Singleton
     public MovieCatalog secondMovieCatalog() {
         return new MovieCatalog("second movie catalog");
     }
