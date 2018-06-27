@@ -1,6 +1,8 @@
 package com.example.spring;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import java.util.List;
@@ -55,10 +57,14 @@ public class ComplexObject {
 //        System.err.println(injection);
 //        injection.print();
 
-        Injection injection1 = context.getBean("injection", Injection.class);
-        System.err.println("injection object property name:" + injection1.name);
-        System.err.println(injection1);
+//        Injection injection1 = context.getBean("injection", Injection.class);
+//        System.err.println("injection object property name:" + injection1.name);
+//        System.err.println(injection1);
 
+
+        MessageSource messageSource = new ClassPathXmlApplicationContext("com/example/spring/context/core.xml");
+        String message = messageSource.getMessage("argument.required", new Object[]{"userDao"}, "The key-value not existing in the properties file", null);
+        System.err.println(message);
 //        Service2 service2 = context.getBean("service2", Service2.class);
 //        System.err.println(service2.getInstance2());
 

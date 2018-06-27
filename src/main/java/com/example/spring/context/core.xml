@@ -11,6 +11,14 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>jdbc</value>
+                <value>format</value>
+            </list>
+        </property>
+    </bean>
 
         <bean id="test" name="test" class="com.example.spring.ComplexObject" p:injectionTest-ref="injection2" depends-on="injection" >
             <property name="list">
