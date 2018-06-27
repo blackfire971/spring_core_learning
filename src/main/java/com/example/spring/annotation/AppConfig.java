@@ -21,6 +21,6 @@ public class AppConfig {
 
     @Bean
     public MovieFinder movieFinder() {
-        return MovieFinder.getMovieFinder(url, username, password);
+        return new MovieFinder(url, username, password);
     }
 }
